@@ -46,8 +46,29 @@ datasource db {
 // Task 3
 // Relasi antar tabel
 // One to Many
-model users{
-  id Int @id @default(autoincrement())
+// model users{
+//   id Int @id @default(autoincrement())
+//   firstName String
+//   lastName String
+//   validated Boolean
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   todo todo[]
+// }
+// model todo{
+//   id Int @id @default(autoincrement())
+//   todoText String
+//   completed Boolean
+//   userId Int
+//   user users @relation(fields: [userId], references: [id])
+// }
+
+
+// Task 4
+// Relasi antar tabel
+// Many to Many
+model users {
+  idUser Int @id @default(autoincrement())
   firstName String
   lastName String
   validated Boolean
@@ -55,10 +76,16 @@ model users{
   updatedAt DateTime @updatedAt
   todo todo[]
 }
-model todo{
-  id Int @id @default(autoincrement())
+model todo {
+  idTodo Int @id @default(autoincrement())
   todoText String
   completed Boolean
   userId Int
-  user users @relation(fields: [userId], references: [id])
+  user users @relation(fields: [userId], references: [idUser])
+  tag tags[]
+}
+model tags {
+  idTag Int @id @default(autoincrement())
+  tagName String
+  todo todo[]
 }
