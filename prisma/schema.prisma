@@ -10,11 +10,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Task 1
+// Membuat Tabel
+// model users {
+//   id Int @id @default(autoincrement())
+//   firstName String
+//   lastName String
+//   validated Boolean
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime
+// }
+
+
+// Task 2
+// Relasi antar tabel
+// Relasi One to One
 model users {
   id Int @id @default(autoincrement())
-  firstName String
+  firstName String 
   lastName String
   validated Boolean
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
+  todo todo?
+}
+model todo {
+  id Int @id @default(autoincrement())
+  todoText String
+  completed Boolean
+  userId Int @unique
+  user users @relation(fields: [userId], references: [id])
 }
