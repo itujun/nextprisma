@@ -1,6 +1,6 @@
 import prisma from './PrismaClient';
 
-// Task 9 : findMany() + where + and
+// Task 10 : findMany() + where + or
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
@@ -10,7 +10,7 @@ export const queryData = async () => {
         validated: true,
       },
       where: {
-        AND: [
+        OR: [
           {
             firstName: {
               startsWith: 'J',
