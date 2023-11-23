@@ -1,6 +1,6 @@
 import prisma from './PrismaClient';
 
-// Task 4 : findMany() + Select + Where
+// Task 5 : findMany() + Select + Where (spesific)
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
@@ -9,7 +9,9 @@ export const queryData = async () => {
         lastName: true,
       },
       where: {
-        firstName: 'Juna',
+        firstName: {
+          startsWith: 'J',
+        },
       },
     });
     return queryOutput;
