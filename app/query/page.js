@@ -1,4 +1,5 @@
-import { createManyUsers, createUser } from '@/utils/createUser';
+import { createTodo } from '@/utils/createTodo';
+import { createManyUsers, createUser, createUserWithTodo } from '@/utils/createUser';
 import { queryData } from '@/utils/getQueryOutput';
 
 // const page = async ({ searchParams }) => {
@@ -10,8 +11,14 @@ const page = async () => {
   // const resultCreateUser = await createUser();
   // console.log(JSON.stringify(resultCreateUser, null, 2)); // resultCreateUser);
 
-  const resultCreateManyUsers = await createManyUsers();
-  console.log(resultCreateManyUsers);
+  // const resultCreateManyUsers = await createManyUsers();
+  // console.log(resultCreateManyUsers);
+
+  // const resultCreateUserWithTodo = await createUserWithTodo();
+  // console.log(JSON.stringify(resultCreateUserWithTodo, null, 2));
+
+  const resultCreateTodo = await createTodo();
+  console.log(JSON.stringify(resultCreateTodo, null, 2)); // resultCreateTodo;
 
   return <div> page </div>;
 };
