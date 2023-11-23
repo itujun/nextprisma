@@ -15,3 +15,21 @@ export const updateUser = async () => {
     return error;
   }
 };
+
+export const updateManyUsers = async () => {
+  try {
+    const result = await prisma.users.updateMany({
+      where: {
+        firstName: {
+          contains: 'W',
+        },
+      },
+      data: {
+        lastName: 'Changed',
+      },
+    });
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
