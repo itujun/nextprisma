@@ -1,10 +1,15 @@
 import prisma from './PrismaClient';
 
-// Task 19 : $queryRaw
-// Sebaiknya jangan digunakan, karena rentan terhadap serangan SQL misalnya seperti Sql Injection
-export const queryData = async () => {
+// Task 20 : searchParams
+export const queryData = async (parameter) => {
+  let query = parameter;
+  //   let query = 'Juna';
   try {
-    const queryOutput = await prisma.$queryRaw`SELECT * FROM cobanextprisma.users`;
+    const queryOutput = await prisma.users.findMany({
+      where: {
+        firstName: query,
+      },
+    });
     return queryOutput;
   } catch (error) {
     console.log(error);
