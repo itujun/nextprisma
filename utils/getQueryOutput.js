@@ -1,6 +1,6 @@
 import prisma from './PrismaClient';
 
-// Task 7 : findMany() + include + nested include
+// Task 8 : findMany() + include + nested include + where + startsWith
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
@@ -9,6 +9,11 @@ export const queryData = async () => {
           include: {
             tag: true,
           },
+        },
+      },
+      where: {
+        firstName: {
+          startsWith: 'M',
         },
       },
     });
