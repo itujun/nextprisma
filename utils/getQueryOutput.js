@@ -1,12 +1,11 @@
 import prisma from './PrismaClient';
 
-// Task 13 : findUnique()
+// Task 14 : groupBy() + _count
 export const queryData = async () => {
   try {
-    const queryOutput = await prisma.users.findUnique({
-      where: {
-        idUser: 2,
-      },
+    const queryOutput = await prisma.users.groupBy({
+      by: ['validated'],
+      _count: true,
     });
     return queryOutput;
   } catch (error) {
