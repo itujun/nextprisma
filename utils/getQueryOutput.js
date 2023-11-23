@@ -1,22 +1,11 @@
 import prisma from './PrismaClient';
 
-// Task 17 : orderBy + findMany()
+// Task 18 : skip + take + findMany()
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
-      where: {
-        firstName: {
-          startsWith: 'J',
-        },
-      },
-      orderBy: [
-        {
-          lastName: 'asc',
-        },
-        {
-          createdAt: 'desc',
-        },
-      ],
+      skip: 0,
+      take: 2,
     });
     return queryOutput;
   } catch (error) {
