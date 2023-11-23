@@ -14,5 +14,7 @@ export const queryData = async () => {
     return queryOutput;
   } catch (error) {
     console.log(error);
+  } finally {
+    prisma.$disconnect();
   }
 };
