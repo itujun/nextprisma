@@ -1,13 +1,12 @@
 import prisma from './PrismaClient';
 
-// Task 12 : findMany() + distinct()
+// Task 13 : findUnique()
 export const queryData = async () => {
   try {
-    const queryOutput = await prisma.users.findMany({
-      select: {
-        validated: true,
+    const queryOutput = await prisma.users.findUnique({
+      where: {
+        idUser: 2,
       },
-      distinct: ['validated'],
     });
     return queryOutput;
   } catch (error) {
