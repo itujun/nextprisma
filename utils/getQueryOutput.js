@@ -1,24 +1,13 @@
 import prisma from './PrismaClient';
 
-// Task 11 : findMany() + where + not
+// Task 12 : findMany() + distinct()
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
       select: {
-        firstName: true,
-        lastName: true,
         validated: true,
       },
-      where: {
-        NOT: [
-          {
-            firstName: {
-              startsWith: 'J',
-            },
-            validated: true,
-          },
-        ],
-      },
+      distinct: ['validated'],
     });
     return queryOutput;
   } catch (error) {
