@@ -1,17 +1,11 @@
 import prisma from './PrismaClient';
 
-// Task 5 : findMany() + Select + Where (spesific)
+// Task 6 : findMany() + include
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
-      select: {
-        firstName: true,
-        lastName: true,
-      },
-      where: {
-        firstName: {
-          startsWith: 'J',
-        },
+      include: {
+        todo: true,
       },
     });
     return queryOutput;
