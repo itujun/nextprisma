@@ -1,11 +1,15 @@
 import prisma from './PrismaClient';
 
-// Task 6 : findMany() + include
+// Task 7 : findMany() + include + nested include
 export const queryData = async () => {
   try {
     const queryOutput = await prisma.users.findMany({
       include: {
-        todo: true,
+        todo: {
+          include: {
+            tag: true,
+          },
+        },
       },
     });
     return queryOutput;
